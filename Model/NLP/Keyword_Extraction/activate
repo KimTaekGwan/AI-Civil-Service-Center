@@ -1,0 +1,3 @@
+cd ../../env/FastAPI/.venv/bin
+source activate
+cd ../../../AI-Civil-Service-Center/Flamework/FastAPI/
