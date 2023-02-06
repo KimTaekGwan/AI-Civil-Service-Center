@@ -1,0 +1,3 @@
+cd ../../../../../env/Keyword_Extraction/.venv/bin
+source activate
+cd ../../../../AI-Civil-Service-Center/Flamework/FastAPI/
