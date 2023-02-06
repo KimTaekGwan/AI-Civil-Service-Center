@@ -11,21 +11,44 @@
     <!-- font-family: 'Noto Sans KR', sans-serif; -->
     <link rel="stylesheet" href="{{url_for('static',filename='styles.css')}}" />
     <!-- <link rel="stylesheet" href="../static/style.css" /> -->
+    <script>
+      function duplicate(event){
+        console.log(event.target.value)
+        subNm = event.target.value
+
+        console.log('123')
+        myData={
+            "subNm":subNm
+        }
+        init = {
+            method: "POST",
+            body: JSON.stringify(myData),
+            headers: {
+              "Content-Type": "application/json"
+            },
+            credentials : "same-origin"
+        }
+        fetch("/", init)
+        .then(response => {
+          console.log(response)
+            if(response.status === 200){
+              console.log('여기냐?')
+              return response.json()
+            } else {
+              console.log(response.statusText);
+            }
+        })
+      console.log('여기가먼저임? 여기보다?')
+        }  
+    </script>
   </head>
 
   <body>
     <div class="main">
       <a href="/">메인 화면으로 돌아가기</a>
     </div>
-
-
-    <form action="/" method="post">
-      <button value = 'hi'> 녹음을 시작합니다.</button>
-      <button value = 'finish'> 녹음을 종료합니다.</button>
-
-    </form>
-
-
+      <button type = 'submit' value = 'hi' id = 'subNm' name = 'ya' onclick = 'duplicate(event)'> 녹음을 시작합니다.</button>
+      <button type = 'submit' value = 'finish' onclick = 'duplicate(event)'> 녹음을 종료합니다.</button>
     {% block content %}{% endblock %}
   </body>
 </html>
@@ -33,3 +56,5 @@
 
 <!-- {#부모 태그 선언, 다른 파일에 {% extends
     "main.html" %} 선언하면 이 밑으로 들어옴 #}  -->
+
+
